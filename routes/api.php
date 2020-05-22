@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResources(['user' => 'API\UsersController']);
+
+Route::get('profile', 'API\UsersController@profile')->name('profile');
+Route::put('update-profile', 'API\UsersController@updateProfileInfo')->name('update_profile');
+Route::put('get-updated-photo', 'API\UsersController@getUpdatedPhoto')->name('get_updated_photo');
+Route::get('find-user', 'API\UsersController@search')->name('search');
